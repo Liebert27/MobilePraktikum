@@ -16,6 +16,7 @@ import com.example.pedro3tia.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.bumptech.glide.Glide
+import com.example.pedro3tia.pertemuan_5.LimaActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -62,6 +63,10 @@ class MainActivity : AppCompatActivity() {
                 .show()
         }
 
+        binding.btnToLima.setOnClickListener {
+            startActivity(Intent(this, LimaActivity::class.java))
+        }
+
         val gift = findViewById<ImageView>(R.id.imageView2)
 
         Glide.with(this)
@@ -71,4 +76,5 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 }
