@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -17,12 +18,14 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.bumptech.glide.Glide
 import com.example.pedro3tia.pertemuan_5.LimaActivity
+import com.example.pedro3tia.pertemuan_6.EnamActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -66,6 +69,28 @@ class MainActivity : AppCompatActivity() {
         binding.btnToLima.setOnClickListener {
             startActivity(Intent(this, LimaActivity::class.java))
         }
+
+        binding.btnToEnam.setOnClickListener {
+            startActivity(Intent(this, EnamActivity::class.java))
+        }
+
+        binding.btnLogout.setOnClickListener {
+            val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
+            AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Apakah Anda yakin ingin keluar?")
+                .setPositiveButton("Ya") { dialog, _ ->
+                    val editor = sharedPref.edit()
+                    editor.clear()
+                    editor.apply()
+                    dialog.dismiss()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                }
+                .setNegativeButton("Batal") { dialog, _ -> dialog.dismiss() }
+                .show()
+        }
+
 
         val gift = findViewById<ImageView>(R.id.imageView2)
 

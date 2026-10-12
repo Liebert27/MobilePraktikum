@@ -3,12 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pertemuan_6.SatuFragment">
-
+    tools:context=".pertemuan_6.SatuFragment"
+    android:background="@color/free">
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="Satu Fragment"
+        android:gravity="center"
+        android:textSize="40dp"
+        android:fontFamily="@font/bebasneue"/>
 
 </FrameLayout>

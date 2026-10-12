@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -16,9 +17,19 @@ import com.google.android.material.snackbar.Snackbar
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+
+//        val isLogin = sharedPref.getBoolean("isLogin", false)
+//        if (isLogin) {
+//            startActivity(Intent(this, MainActivity::class.java))
+//            finish()
+//            return
+//        }
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -34,16 +45,31 @@ class LoginActivity : AppCompatActivity() {
 //        val username : EditText = findViewById(R.id.edtUsername)
 
         binding.btnLogin.setOnClickListener {
-            val user = binding.edtUsername.text.toString()
+            val user = binding.edtUsername.text.toString().trim()
             val pass = binding.edtPassword.text.toString()
 
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("username", user)
-            intent.putExtra("password", pass)
-            startActivity(intent)
+            if (user.isNotEmpty() && user == pass) {
+                val editor = sharedPref.edit()
+                editor.putBoolean("isLogin", true)
+                editor.putString("username", user)
+                editor.apply()
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            } else {
+                AlertDialog.Builder(this)
+                    .setTitle("Login Gagal")
+                    .setMessage("Silahkan coba lagi")
+                    .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                    .show()
+            }
 
-            Log.d("output", "Username:$user Password: $pass")
-            Toast.makeText(this, "Username: $user Password: $pass", Toast.LENGTH_LONG).show()
+//            val intent = Intent(this, MainActivity::class.java)
+//            intent.putExtra("username", user)
+//            intent.putExtra("password", pass)
+//            startActivity(intent)
+
+//            Log.d("output", "Username:$user Password: $pass")
+//            Toast.makeText(this, "Username: $user Password: $pass", Toast.LENGTH_LONG).show()
         }
 
 
