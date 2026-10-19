@@ -1,6 +1,7 @@
 package com.example.pedro3tia.Message
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,11 +27,15 @@ class MessageAdapter(
         binding.textMessage.text = data.messageText
 
         view.setOnClickListener {
-            Snackbar.make(
-                parent,
-                "Pesan dari ${data.senderName}: ${data.messageText}",
-                Snackbar.LENGTH_SHORT
-            ).show()
+            val i = Intent(context, MessageActivity::class.java)
+            i.putExtra("SENDER", data.senderName)
+            i.putExtra("MESSAGE", data.messageText)
+            context.startActivity(i)
+//            Snackbar.make(
+//                parent,
+//                "Pesan dari ${data.senderName}: ${data.messageText}",
+//                Snackbar.LENGTH_SHORT
+//            ).show()
         }
         return view
     }
