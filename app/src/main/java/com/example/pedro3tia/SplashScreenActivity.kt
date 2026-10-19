@@ -25,7 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val isLogin = sharedPref.getBoolean("isLogin", false)
         if (isLogin) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, BaseActivity::class.java))
             finish()
             return
         }
@@ -34,7 +34,7 @@ class SplashScreenActivity : AppCompatActivity() {
             delay(2000) // simulasi pengambilan data selama 2 detik
 //            val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 //            val isLogin = sharedPref.getBoolean("isLogin", false)
-            val target = if (isLogin) MainActivity::class.java else LoginActivity::class.java
+            val target = if (isLogin) BaseActivity::class.java else LoginActivity::class.java
             startActivity(Intent(this@SplashScreenActivity, target))
             finish()
         }

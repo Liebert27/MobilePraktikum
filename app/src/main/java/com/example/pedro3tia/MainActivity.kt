@@ -2,9 +2,6 @@ package com.example.pedro3tia
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -12,13 +9,13 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.pedro3tia.databinding.ActivityLoginBinding
 import com.example.pedro3tia.databinding.ActivityMainBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import com.bumptech.glide.Glide
-import com.example.pedro3tia.pertemuan_5.LimaActivity
-import com.example.pedro3tia.pertemuan_6.EnamActivity
+import com.example.pedro3tia.Home.HomeFragment
+import com.example.pedro3tia.Home.pertemuan_5.LimaActivity
+import com.example.pedro3tia.Home.pertemuan_6.EnamActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -73,6 +70,8 @@ class MainActivity : AppCompatActivity() {
         binding.btnToEnam.setOnClickListener {
             startActivity(Intent(this, EnamActivity::class.java))
         }
+
+
 
         binding.btnLogout.setOnClickListener {
             val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
