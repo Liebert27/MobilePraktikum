@@ -5,4 +5,9 @@
     <color name='free'>#08D9D6</color>
     <color name='red'>#FF2E63</color>
     <color name='gray'>#EAEAEA</color>
+    <color name="tutorial_blue">#64B5F6</color>
+    <color name="tutorial_green">#AED581</color>
+    <color name="tutorial_teal">#4DB6AC</color>
+    <color name="abu_gelap">#5F6368</color>
+    <color name="dot_selected">#211C1C</color>
 </resources>

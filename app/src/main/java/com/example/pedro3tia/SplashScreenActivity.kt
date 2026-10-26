@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
+import com.example.pedro3tia.Message.tutorial.TutorialMessageActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -34,7 +35,7 @@ class SplashScreenActivity : AppCompatActivity() {
             delay(2000) // simulasi pengambilan data selama 2 detik
 //            val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
 //            val isLogin = sharedPref.getBoolean("isLogin", false)
-            val target = if (isLogin) BaseActivity::class.java else LoginActivity::class.java
+            val target = if (isLogin) BaseActivity::class.java else TutorialMessageActivity::class.java
             startActivity(Intent(this@SplashScreenActivity, target))
             finish()
         }

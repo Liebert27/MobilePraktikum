@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.pedro3tia.Home.pertemuan_5.LimaActivity
 import com.example.pedro3tia.Home.pertemuan_6.EnamActivity
+import com.example.pedro3tia.Home.pertemuan_9.NinthActivity
 import com.example.pedro3tia.LoginActivity
 import com.example.pedro3tia.MainActivity
 import com.example.pedro3tia.R
@@ -78,8 +79,8 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), EnamActivity::class.java))
         }
 
-        binding.btnToTujuh.setOnClickListener {
-            startActivity(Intent(requireContext(), HomeFragment::class.java))
+        binding.btnToNinth.setOnClickListener {
+            startActivity(Intent(requireContext(), NinthActivity::class.java))
         }
 
         binding.btnLogout.setOnClickListener {
